@@ -1,8 +1,19 @@
-# new_widget
+# Unit Converter
 
-A new Flutter project.
+A demo Flutter project.
 
-## Getting Started
+## Getting Started (MacOSX)
 
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
+Simple app based on a Udacity course on how to build Flutter apps.
+
+```
+$ flutter upgrade
+$ brew install --HEAD libimobiledevice
+$ brew install ideviceinstaller
+$ brew install ios-deploy
+$ brew install cocoapods
+$ pod setup
+$ open -a Simulator.app
+$ flutter run
+```
+

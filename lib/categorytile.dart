@@ -21,33 +21,12 @@ class CategoryTile extends StatelessWidget {
   const CategoryTile({
     Key key,
     @required this.category,
+    // TODO: You may want to pass in a null onTap when the Currency [Category]
+    // is in a loading or error state. In build(), you'll want to update the UI
+    // accordingly.
     @required this.onTap,
   })  : assert(category != null),
-        assert(onTap != null),
         super(key: key);
-
-  /// Navigates to the [UnitConverter].
-  void _navigateToConverter(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute<Null>(
-      builder: (BuildContext context) {
-        return Scaffold(
-          appBar: AppBar(
-            elevation: 1.0,
-            title: Text(
-              category.name,
-              style: Theme.of(context).textTheme.display1,
-            ),
-            centerTitle: true,
-            backgroundColor: category.color,
-          ),
-          body: UnitConverter(category: category),
-          // This prevents the attempt to resize the screen when the keyboard
-          // is opened
-          resizeToAvoidBottomPadding: false,
-        );
-      },
-    ));
-  }
 
   /// Builds a custom widget that shows [Category] information.
   ///
@@ -59,7 +38,8 @@ class CategoryTile extends StatelessWidget {
   // See https://docs.flutter.io/flutter/material/Theme-class.html
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.transparent,
+      color:
+          onTap == null ? Color.fromRGBO(50, 50, 50, 0.2) : Colors.transparent,
       child: Container(
         height: _rowHeight,
         child: InkWell(
@@ -68,7 +48,7 @@ class CategoryTile extends StatelessWidget {
           splashColor: category.color['splash'],
           // We can use either the () => function() or the () { function(); }
           // syntax.
-          onTap: () => onTap(category),
+          onTap: onTap == null ? null : () => onTap(category),
           child: Padding(
             padding: EdgeInsets.all(8.0),
             child: Row(
