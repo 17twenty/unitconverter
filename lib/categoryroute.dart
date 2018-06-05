@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'backdrop.dart';
 import 'category.dart';
 import 'categorytile.dart';
 import 'unit.dart';
-import 'package:new_widget/unit_converter.dart';
-import 'package:new_widget/backdrop.dart';
-
-final _backgroundColor = Colors.green[100];
+import 'unit_converter.dart';
 
 /// Category Route (screen).
 ///
@@ -25,7 +23,6 @@ class CategoryRoute extends StatefulWidget {
 class _CategoryRouteState extends State<CategoryRoute> {
   Category _defaultCategory;
   Category _currentCategory;
-
   final _categories = <Category>[];
   static const _categoryNames = <String>[
     'Length',
@@ -125,9 +122,12 @@ class _CategoryRouteState extends State<CategoryRoute> {
 
   @override
   Widget build(BuildContext context) {
-    final listView = Container(
-      color: _backgroundColor,
-      padding: EdgeInsets.symmetric(horizontal: 8.0),
+    final listView = Padding(
+      padding: EdgeInsets.only(
+        left: 8.0,
+        right: 8.0,
+        bottom: 48.0,
+      ),
       child: _buildCategoryWidgets(),
     );
 
